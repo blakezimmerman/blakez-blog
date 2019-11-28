@@ -1,16 +1,11 @@
-import React, { Fragment } from "react"
-import { Styled } from "theme-ui"
-
-/**
- * Change the content to add your own bio
- */
+import React, { Fragment } from "react";
+import { Styled } from "theme-ui";
 
 export default () => (
   <Fragment>
-    This is where <Styled.a href="http://example.com/">your name</Styled.a>
-    {` `}
-    goes.
+    Hi! I'm{" "}
+    <Styled.a href="http://blakezimmerman.me/">Blake Zimmerman</Styled.a>
     <br />
-    Or whatever, you make the rules.
+    I'm a software engineer trying to turn my thoughts into words
   </Fragment>
-)
+);

@@ -1,6 +1,70 @@
 ---
 title: Filter and Map with .flatMap
-date: 2019-11-28
+date: 2019-11-29
 ---
 
-Coming Soon...
+ECMAScript 2019 (aka ES2019, the latest JavaScript standard) has introduced many helpful features to the language, notably the `.flatMap` method that is now available on arrays.
+Calling `.flatMap` is equivalent to calling `.map` followed by `.flat`.
+
+`.flat` is another array method introduced by ES2019 that flattens each element of the array it is called on. Here is an example:
+
+```js
+const before = [1, [2, 3, 4], [], [5]];
+const after = before.flat();
+
+console.log(after); // [1, 2, 3, 4, 5]
+```
+
+While it may not be immediately obvious why the `.flatMap` method is so useful, one great benefit of the method is that it lets you filter an array while you map over it.
+
+Suppose you have an array of numbers and you want the square of every number that is even. Without `.flatMap`, you might do something like this:
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const result = numbers.filter((n) => n % 2 === 0).map((n) => n ** 2);
+
+console.log(result); // [4, 16, 36]
+```
+
+While this code does work, we iterate over the array twice which is not optimal for very large arrays. Using `.flatMap`, we can perform the same operation using only one iteration.
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const result = numbers.flatMap((n) => (n % 2 === 0 ? [n ** 2] : []));
+
+console.log(result); // [4, 16, 36]
+```
+
+To help us understand how this code works, let's recall that the above code is equivalent to the following code using `.map` and `.flat`.
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const result = numbers
+  .map((n) => (n % 2 === 0 ? [n ** 2] : []))
+  // [[], [4], [], [16], [], [36]]
+  .flat();
+
+console.log(result); // [4, 16, 36]
+```
+
+As we see, if the current element passes our filter condition, we wrap our mapped element in an array and return it, otherwise, we return an empty array.
+By calling `.flat`, all of the empty arrays are removed and our mapped elements are unwrapped.
+
+What `.flatMap` allows us to do in more general terms, is change the length of an array as we map over it. In the filter and map example above, we are decreasing the length of the array during our iteration. However, we can also use `.flatMap` to increase the length of our array.
+
+For example, if you wanted to take an array of phrases and turn it into an array of lowercase words, you could do the following with `.flatMap`.
+
+```js
+const phrases = ["Hello", "How is your day", "Thank you"];
+
+const words = phrases.flatMap((phrase) => phrase.toLowerCase().split(" "));
+
+console.log(words); // ["hello", "how", "is", "your", "day", "thank", "you"]
+```
+
+Since the `.split` method returns an array, it's a perfect fit for `.flatMap`.
+
+Now that you have an understanding of how `.flatMap` works and what type of situations it can be useful for, I hope you get to use it to simplify the filter and map operations in your own code. Thanks for reading!

@@ -4,6 +4,12 @@ module.exports = {
       resolve: `gatsby-theme-blog`,
       options: {},
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GA_TRACKING_ID || "none",
+      },
+    },
   ],
   siteMetadata: {
     title: `Blake's Developer Blog`,

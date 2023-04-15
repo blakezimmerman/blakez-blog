@@ -1,11 +1,14 @@
 [[redirects]]
   from = "/"
   to = "https://blakez.dev/blog"
+  force = true
 
 [[redirects]]
   from = "/type-safe-components-with-generics"
   to = "https://blakez.dev/blog/type-safe-components-with-generics"
+  force = true
 
 [[redirects]]
   from = "/create-svg-components-with-react-and-typescript"
   to = "https://blakez.dev/blog/create-svg-components-with-react-and-typescript"
+  force = true

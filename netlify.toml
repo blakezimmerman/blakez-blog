@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/"
+  to = "https://blakez.dev/blog"
+
+[[redirects]]
+  from = "/type-safe-components-with-generics"
+  to = "https://blakez.dev/blog/type-safe-components-with-generics"
+
+[[redirects]]
+  from = "/create-svg-components-with-react-and-typescript"
+  to = "https://blakez.dev/blog/create-svg-components-with-react-and-typescript"
